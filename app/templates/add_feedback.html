@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="main-page">
+    <h1>Оставьте отзыв об аренде автомобиля</h1>
+    <form action="" method="post"  novalidate>
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.stars.label }}<br>
+            {{ form.stars }}<br>
+            {% for error in form.stars.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.comment.label }}<br>
+            {{ form.comment(size=64) }}<br>
+            {% for error in form.comment.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+
+        <p>
+            {{ form.dealer_stars.label }}<br>
+            {{ form.dealer_stars }}<br>
+            {% for error in form.dealer_stars.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.dealer_comment.label }}<br>
+            {{ form.dealer_comment(size=64) }}<br>
+            {% for error in form.dealer_comment.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        
+        <p>{{ form.submit() }}</p>
+
+    </form>
+</div>
+{% endblock %}

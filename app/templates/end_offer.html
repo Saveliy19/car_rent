@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+
+    <h3>Выберите необходимый заказ</h3>
+    <hr>
+    {% for o in offers_list %}
+        <p>id: {{ o[0] }}</p>
+        <p>Автомобиль: {{ o[1] }} {{ o[2] }}({{ o[3] }})</p>
+        <p>Клиент: {{o[4]}}</p>
+        <p><a href="{{ url_for('end_offer2', admin_username = current_user.username, offer_id=o[0]) }}"><span style="color: black;">Завершить аренду</span></a></p>
+        <hr>
+    {% endfor %}
+    <a href="{{ url_for('admin', username=current_user.username) }}">Назад</a>
+        
+
+{% endblock %}

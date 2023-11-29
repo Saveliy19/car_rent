@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="main-page">
+    <h1>Выберите параметры бронирования</h1>
+    <form action="" method="post"  novalidate>
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.day.label }}<br>
+            {{ form.day(size=32) }}<br>
+            {% for error in form.day.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.time.label }}<br>
+            {{ form.time(size=32) }}<br>
+            {% for error in form.time.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+
+        <p>
+            {{ form.count.label }}<br>
+            {{ form.count(size=32) }}<br>
+            {% for error in form.count.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        
+        <p>
+            {{ form.dayhour.label }}<br>
+            {{ form.dayhour }}<br>
+            {% for error in form.dayhour.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+
+        <p>Нажимая кнопку "ЗАБРОНИРОВАТЬ", Вы подтверждаете, что ознакомились с <a href="{{ url_for('conditions') }}">условиями.</a></p>
+        
+        <p>{{ form.submit() }}</p>
+
+    </form>
+</div>
+{% endblock %}

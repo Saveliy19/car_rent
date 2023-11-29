@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Проверьте введенные Вами данные</h1>
+
+    <h4>Автомобиль</h4>
+    <p>{{car[0][0]}} {{car[0][1]}}({{car[0][2]}})</p>
+    <h4>Начало аренды</h4>
+        <p>Дата: {{ date }}</p>
+        <p>Время: {{ start_time }}</p>
+
+        <h4>Аренда на {{hours_count}} ч.</h4>
+
+        <h4>Сумма к оплате</h4>
+        <p>{{ summ }}₽</p>
+
+
+    <form action="" method="post"  novalidate>
+
+            {{ form.hidden_tag() }}
+            <p>
+                {{ form.submit(size=32) }}<br>
+                {% for error in form.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+        </form>
+
+{% endblock %}

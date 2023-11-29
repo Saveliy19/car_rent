@@ -1,0 +1,44 @@
+<html>
+    <head>
+      {% if title %}
+      <title>{{ title }}</title>
+      {% else %}
+      <title>ZDrive</title>
+      {% endif %}
+      <link rel="shortcut icon" href="{{ url_for ('static', filename='img/logo.jpg') }}" type="image/x-icon">
+
+    </head>
+    <body>
+      <style>
+        body {
+        background-color: #ADD8E6
+        }
+        </style>
+      <div>
+        <a href="/"><img src="{{ url_for ('static', filename='img/logo.jpg') }}" title = "zdrive_logo" width="5%"></a>
+        <a href="{{ url_for('conditions') }}">Условия</a>
+        {% if current_user.is_anonymous %}
+        <a href="{{ url_for('login') }}">Войти</a>
+        {% else %}
+        <a href="{{ url_for('logout') }}">Выйти</a>
+        
+        {% if  current_user.role == "client" %}
+        <a href="{{ url_for('client', username=current_user.username) }}">Профиль</a>
+        {% else %}
+        <a href="{{ url_for('admin', username=current_user.username) }}">Администрирование</a>
+        {% endif %}
+        {% endif %}
+      </div>
+      <hr>
+      {% with messages = get_flashed_messages() %}
+      {% if messages %}
+      <ul>
+          {% for message in messages %}
+          <li>{{ message }}</li>
+          {% endfor %}
+      </ul>
+      {% endif %}
+      {% endwith %}
+      {% block content %}{% endblock %}
+  </body>
+</html>

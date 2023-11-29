@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+
+
+{% block content %}
+<body>
+      {% if current_user.is_anonymous %}
+        <a href="{{ url_for('login') }}">Авторизуйтесь для просмотра каталога</a>
+
+      {% else %}
+        
+        <h1>ПРОКАТ АВТОМОБИЛЕЙ В ТВОЕМ ГОРОДЕ</h1>
+
+        <h3>Какой автомобиль я ищу:</h3>
+        <p><a href="{{ url_for('cars', type = 'Все автомобили') }}"><span style="color: black;">Любого типа</span></a></p>
+
+        {% for t in types %}
+          <p><a href="{{ url_for('cars', type = t) }}"><span style="color: black;">{{ t }}</span></a></p>
+        {% endfor %}
+        
+        
+        
+      {% endif %}
+
+      
+      
+</body>
+{% endblock %}

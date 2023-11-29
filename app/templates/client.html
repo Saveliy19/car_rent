@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    
+    <img src="https://klike.net/uploads/posts/2022-09/1663077340_j-78.jpg" width="23%" height="30%" alt="car">
+    <h1>{{ user.name }}</h1>
+    <a href="{{ url_for('change_password', username=current_user.username) }}">Сменить пароль</a>
+    
+    <hr>
+    <h4>Паспорт</h4>
+    <p>{{ user.passport }}</p>
+
+    <h4>Баланс</h4>
+    <p>{{ user.balance }}</p>
+    <a href="{{ url_for('add_balance', username=current_user.username) }}">Пополнить</a>
+
+    <h4>Город</h4>
+    <p>{{ city[0][0] }}</p>
+    <a href="{{ url_for('change_city', username=current_user.username) }}">Сменить</a>
+
+    <hr>
+    <h2>Моя аренда</h2>
+    {% for m in my_rent %}
+    <p><a href="{{ url_for('about_car', type=m[9], id=m[8]) }}">{{ m[0] }} {{ m[1] }}({{ m[2] }})</a></p>
+        <p>Дата начала: {{ m[5] }}</p>
+        <p>Время начала: {{ m[6] }}</p>
+        <p>Количество часов: {{ m[3] }}</p>
+        <p>Адрес автосалона: {{ m[7] }}</p>
+        <p>Итоговая стоимость: {{ m[4] }}</p>
+        <p><a href="{{ url_for('cancel_rent', username=current_user.username, offer_id=m[10], car_id=m[8], rubles=m[4]) }}">Отменить аренду</a></p>
+    {% endfor %}
+    
+    <hr>
+    <a href="{{ url_for('rent_store', username=current_user.username) }}"><h2>История аренды</h2></a>
+    
+
+{% endblock %}
+

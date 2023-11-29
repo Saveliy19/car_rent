@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+    
+
+    <h1>Отзывы клиентов об автосалоне</h1>
+    <hr>
+
+    {% for f in feedback %}
+        <p>Клиент <u>{{ f[0] }}</u></p>
+        <li>Поставил автосалону оценку: {{f[1]}}</li>
+        <li>Комментарий: {{f[2]}}</li>
+        <hr>
+    {% endfor %}
+    
+
+    <a href="{{ url_for('about_car', type=type, id=id) }}">Назад</a>
+
+{% endblock %}

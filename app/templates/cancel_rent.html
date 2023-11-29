@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="main-page">
+    <h1>Отмена аренды</h1>
+    <form action="" method="post"  novalidate>
+
+        {{ form.hidden_tag() }}
+        
+        <p>Вы действительно хотите отменить аренду {{info[0][0]}} {{info[0][1]}}({{info[0][2]}})?</p>
+        <p>На Ваш баланс будет возвращено {{ rubles }}₽</p>
+        <p><u>Стоимость депозита при отмене не возвращаетя!</u></p>
+        <p>{{ form.submit() }}</p>
+        <a href="{{ url_for('client', username = current_user.username) }}">Назад</a>
+
+    </form>
+</div>
+{% endblock %}

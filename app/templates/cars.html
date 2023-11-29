@@ -1,0 +1,40 @@
+
+
+{% extends "base.html" %}
+
+{% block content %}
+<div class="main-page">
+    <form action="" method="post"  novalidate>
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.search.label }}<br>
+            {{ form.search(size=32) }}<br>
+            {% for error in form.search.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.lower_bound.label }}<br>
+            {{ form.lower_bound(size=5) }}<br>
+            {% for error in form.lower_bound.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.upper_bound.label }}<br>
+            {{ form.upper_bound(size=5) }}<br>
+            {% for error in form.upper_bound.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>{{ form.submit() }}</p>
+
+    <h3>Вот список автомобилей по вашему запросу</h3>
+    {% for c in car_list %}
+        <p><a href="{{ url_for('about_car', id=c[0], type=type) }}"><span style="color: black;">{{ c[1] }} {{ c[2] }} ({{ c[3] }})</span></a></p>
+    {% endfor %}
+    <a href="{{ url_for('index') }}">Назад</a>
+        
+    </form>
+</div>
+{% endblock %}

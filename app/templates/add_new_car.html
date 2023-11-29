@@ -1,0 +1,143 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="main-page">
+    <h1>Введите данные для добавления нового автомобиля</h1>
+    <form action="" method="post"  novalidate>
+
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.dealer.label }}<br>
+            {{ form.dealer }}<br>
+            {% for error in form.dealer.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+
+        <p>
+            {{ form.brand.label }}<br>
+            {{ form.brand}}<br>
+            {% for error in form.brand.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+
+        <p>
+            {{ form.model.label }}<br>
+            {{ form.model }}<br>
+            {% for error in form.model.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+
+        <p>
+            {{ form.year.label }}<br>
+            {{ form.year }}<br>
+            {% for error in form.year.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+
+        <p>
+            {{ form.types.label }}<br>
+            {{ form.types }}<br>
+            {% for error in form.types.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+
+        <p>
+            {{ form.costday.label }}<br>
+            {{ form.costday }}<br>
+            {% for error in form.costday.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+
+        <p>
+            {{ form.costhour.label }}<br>
+            {{ form.costhour }}<br>
+            {% for error in form.costhour.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        
+        <p>
+            {{ form.deposit.label }}<br>
+            {{ form.deposit }}<br>
+            {% for error in form.deposit.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+
+        <p>
+            {{ form.transmission.label }}<br>
+            {{ form.transmission }}<br>
+            {% for error in form.transmission.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+
+        <p>
+            {{ form.engine.label }}<br>
+            {{ form.engine }}<br>
+            {% for error in form.engine.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+
+        <p>
+            {{ form.seats.label }}<br>
+            {{ form.seats }}<br>
+            {% for error in form.seats.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+
+        <p>
+            {{ form.force.label }}<br>
+            {{ form.force }}<br>
+            {% for error in form.force.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+
+        <p>
+            {{ form.oil.label }}<br>
+            {{ form.oil }}<br>
+            {% for error in form.oil.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+
+        <p>
+            {{ form.drive.label }}<br>
+            {{ form.drive }}<br>
+            {% for error in form.drive.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+
+        <p>
+            {{ form.info.label }}<br>
+            {{ form.info }}<br>
+            {% for error in form.info.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+
+        <p>
+            {{ form.link.label }}<br>
+            {{ form.link }}<br>
+            {% for error in form.link.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        
+
+        <p>{{ form.submit() }}</p>
+        <a href="{{ url_for('admin', username = current_user.username) }}">Назад</a>
+
+    </form>
+</div>
+{% endblock %}

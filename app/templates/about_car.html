@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block content %}
+    
+
+    <form action="" method="post"  novalidate>
+
+    <h3>{{ info[0][1] }} {{ info[0][2] }}({{ info[0][12] }})</h3>
+
+    
+
+    <img src="{{image}}" width="30%" height="30%" alt="car">
+    <h4>{{ info[0][0] }}</h4>
+
+
+
+    <li>Трансмиссия: {{ info[0][5] }}</li>
+    <li>Двигатель: {{ info[0][6] }} л.</li>
+    <li>Мощность: {{ info[0][8] }} л.с.</li>
+    <li>Расход топлива: {{ info[0][9] }} л/100км</li>
+    <li>Привод: {{ info[0][10] }}</li>
+    <li>Количество мест: {{ info[0][7] }}</li>
+    <li>Средняя оценка: {{ car_stars }}</li>
+
+    <h4>Описание автомобиля</h4>
+    <p>{{info[0][16]}}</p>
+
+    <h4>Об автосалоне</h4>
+    <p>Мы находимся по адресу: {{ info[0][14] }}, {{ info[0][13]}}</p>
+    <p>Телефон для связи: {{ info[0][15] }}</p>
+    <p>Рейтинг автосалона: {{ dealer_stars }}</p>
+    <a href="{{ url_for('about_dealer', type=type,  dealer_id=dealer_id, id=id) }}">Смотреть отзывы об автосалоне</a>
+
+    
+    
+
+        {{ form.hidden_tag() }}
+        <p>{{ form.submit() }}</p>
+
+        <h3>Отзывы об автомобиле</h3>
+        {% for f in feedback %}
+            <p>Клиент <u>{{ f[0] }}</u></p>
+            <li>Поставил автомобилю оценку: {{ f[1] }}</li>
+            <li>Комментарий: {{ f[2] }}</li>
+        {% endfor %}
+    </form>
+
+    <a href="{{ url_for('cars', type=type) }}">К списку автомобилей</a>
+
+{% endblock %}
+

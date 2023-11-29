@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Регистрация в системе</h1>
+    <form action="" method="post"  novalidate>
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.lastname.label }}<br>
+            {{ form.lastname(size=32) }}<br>
+            {% for error in form.lastname.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.firstname.label }}<br>
+            {{ form.firstname(size=32) }}<br>
+            {% for error in form.firstname.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.patronymic.label }}<br>
+            {{ form.patronymic(size=32) }}<br>
+            {% for error in form.patronymic.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+
+        <h4>Введите Ваши паспортные данные</h4>
+        <p>
+            {{ form.passport1.label }}<br>
+            {{ form.passport1(size=32) }}<br>
+            {% for error in form.passport1.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.passport2.label }}<br>
+            {{ form.passport2(size=32) }}<br>
+            {% for error in form.passport2.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+
+        <p>
+            {{ form.age.label }}<br>
+            {{ form.age }}<br>
+            {% for error in form.age.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+
+        <h4>Укажите город</h4>
+        <p>
+            {{ form.city.label }}<br>
+            {{ form.city}}<br>
+            {% for error in form.city.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+
+        <h4>Введите данные для входа в дальнейшем</h4>
+        <p>
+            {{ form.username.label }}<br>
+            {{ form.username(size=32) }}<br>
+            {% for error in form.username.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.password1.label }}<br>
+            {{ form.password1(size=32) }}<br>
+            {% for error in form.password1.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.password2.label }}<br>
+            {{ form.password2(size=32) }}<br>
+            {% for error in form.password2.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}</p>
+        <p>{{ form.submit() }}</p>
+        
+        {% if current_user.is_anonymous %}
+        <a href="{{ url_for('login') }}">У меня уже есть аккаунт</a>
+        {% endif %}
+    </form>
+{% endblock %}

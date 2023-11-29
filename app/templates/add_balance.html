@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="main-page">
+    <h1>Введите данные для оплаты</h1>
+    <form action="" method="post"  novalidate>
+
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.rubles.label }}<br>
+            {{ form.rubles(size=32) }}<br>
+            {% for error in form.rubles.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+
+        <p>
+            {{ form.number.label }}<br>
+            {{ form.number(size=32) }}<br>
+            {% for error in form.number.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+
+        <p>
+            {{ form.year.label }}<br>
+            {{ form.year(size=2) }}<br>
+            {% for error in form.year.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+
+        <p>
+            {{ form.cvc.label }}<br>
+            {{ form.cvc(size=2) }}<br>
+            {% for error in form.cvc.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        
+        <p>{{ form.submit() }}</p>
+        <a href="{{ url_for('client', username = current_user.username) }}">Назад</a>
+
+    </form>
+</div>
+{% endblock %}
